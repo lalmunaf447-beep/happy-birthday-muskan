@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Happy Birthday Muskan ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(-45deg,#ff6ec7,#ff8fab,#a855f7,#7c3aed);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0 50%;}
+
+}
+
+.box{
+
+width:90%;
+max-width:750px;
+padding:40px;
+text-align:center;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border-radius:30px;
+
+box-shadow:0 0 40px rgba(255,255,255,.25);
+
+color:white;
+
+}
+
+h1{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+text-shadow:0 0 20px white;
+
+}
+
+p{
+
+font-size:23px;
+
+line-height:35px;
+
+}
+
+button{
+
+margin-top:35px;
+
+padding:18px 45px;
+
+font-size:22px;
+
+border:none;
+
+border-radius:50px;
+
+cursor:pointer;
+
+background:white;
+
+color:#ff1493;
+
+font-weight:bold;
+
+transition:.4s;
+
+}
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+.balloon{
+
+position:absolute;
+
+bottom:-120px;
+
+font-size:45px;
+
+animation:fly linear infinite;
+
+}
+
+@keyframes fly{
+
+100%{
+
+transform:translateY(-130vh);
+
+}
+
+}
+
+.heart{
+
+position:absolute;
+
+top:-50px;
+
+font-size:28px;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+100%{
+
+transform:translateY(120vh);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1 id="title">
+
+🎂 Happy Birthday Muskan ❤️
+
+</h1>
+
+<p id="text">
+
+Today is your special day ✨
+
+<br><br>
+
+I have prepared a magical surprise just for you 💖
+
+</p>
+
+<button id="btn">
+
+Start Surprise 🎁
+
+</button>
+
+</div>
+
+<script>
+const btn=document.getElementById("btn");
+const title=document.getElementById("title");
+const text=document.getElementById("text");
+
+createBalloons();
+createHearts();
+
+btn.onclick=function(){
+
+let count=3;
+
+btn.style.display="none";
+
+title.innerHTML="✨ Get Ready ✨";
+
+text.innerHTML="<h1 id='count'>3</h1>";
+
+let timer=setInterval(()=>{
+
+count--;
+
+if(count>0){
+
+document.getElementById("count").innerHTML=count;
+
+}else{
+
+clearInterval(timer);
+
+showWish();
+
+}
+
+},1000);
+
+};
+
+function showWish(){
+
+typeWriter("🎉 Happy Birthday Muskan ❤️","May Allah bless you with happiness, success, good health and endless smiles. 💖");
+
+}
+
+function typeWriter(head,msg){
+
+title.innerHTML="";
+
+text.innerHTML="";
+
+let i=0;
+
+let t=setInterval(()=>{
+
+title.innerHTML+=head.charAt(i);
+
+i++;
+
+if(i>=head.length){
+
+clearInterval(t);
+
+typeMessage(msg);
+
+}
+
+},80);
+
+}
+
+function typeMessage(message){
+
+let i=0;
+
+let p=document.getElementById("text");
+
+let t=setInterval(()=>{
+
+p.innerHTML+=message.charAt(i);
+
+i++;
+
+if(i>=message.length){
+
+clearInterval(t);
+
+showCake();
+
+}
+
+},40);
+
+}
+
+function createBalloons(){
+
+for(let i=0;i<18;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML="🎈";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=(8+Math.random()*6)+"s";
+
+document.body.appendChild(b);
+
+}
+
+}
+
+function createHearts(){
+
+for(let i=0;i<25;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+}
+
+}
+
+function showCake(){
+
+text.innerHTML += `
+
+<br><br>
+
+<div id="cake" style="font-size:120px;">🎂</div>
+
+<br>
+
+<button onclick="cutCake()" id="cakeBtn">
+🎂 Cut the Cake
+</button>
+
+`;
+
+}
+
+function cutCake(){
+document.getElementById("cake").innerHTML="🍰";
+
+document.getElementById("cakeBtn").style.display="none";
+
+text.innerHTML += `
+
+<br><br>
+
+<h2 style="color:#FFD700;">🎉 Happy Birthday Muskan ❤️</h2>
+
+<p>
+Dear Muskan,<br><br>
+
+May Allah bless you with happiness,
+good health, success and endless smiles.
+
+🤲 Ameen.
+
+❤️ Enjoy your special day ❤️
+
+</p>
+
+`;
+
+fireworks();
+
+}
+function fireworks(){
+
+const emoji=["🎉","✨","🎊","💖","🎈","🌸"];
+
+for(let i=0;i<200;i++){
+
+let e=document.createElement("div");
+
+e.innerHTML=emoji[Math.floor(Math.random()*emoji.length)];
+
+e.style.position="fixed";
+e.style.left=Math.random()*100+"vw";
+e.style.top="-30px";
+e.style.fontSize=(20+Math.random()*20)+"px";
+e.style.animation="fall "+(3+Math.random()*3)+"s linear";
+
+document.body.appendChild(e);
+
+}
+
+}
+</script>
+</body>
+</html>
